@@ -47,14 +47,6 @@ def download_youtube_content(base_output_path, video_id, youtube_url):
         youtube_url
     ]
 
-    # ParkCeleb yt-dlp command to download audios
-    # yt_dlp_command = [
-    #     'yt-dlp', '--retries', '5', '--no-check-certificate',
-    #     '--extract-audio', '--audio-format', 'wav',
-    #     '--output-na-placeholder', 'not_available',
-    #     '-o', os.path.join(output_dir, '%(id)s.%(ext)s'),
-    #     youtube_url]
-
     # Run the command
     try:
         subprocess.run(yt_dlp_command, check=True)
@@ -96,32 +88,25 @@ def process_metadata_files(directory):
 
 # Main script execution
 if __name__ == "__main__":
-
     """
-    This script processes metadata files containing YouTube links, extracts video IDs, and downloads the corresponding videos using yt-dlp, excluding videos longer than 10 minutes. 
-    It organizes the video files into directories based on speaker IDs and video IDs.
+    Example Usage:
+        python download_videos.py <base_folder_path>
 
-    Usage:
-        python script.py <root_directory>
-
-    The script expects subdirectories named 'PD' (Parkinson's Disease) and 'CN' (Control) within the root directory, each containing metadata.xlsx files with YouTube links.
-
-    Functions:
-    - extract_video_id(): Extracts YouTube video ID from a URL.
-    - download_youtube_content(): Downloads video from YouTube if it is 10 minutes or shorter and saves it as an MP4 file.
-    - process_metadata_files(): Processes metadata files, downloads videos, and organizes files into speaker-specific folders.
+    Parameters:
+        <base_folder_path> : Path to the base folder of the ParkCeleb dataset containing 'PD'/'CN' subfolders.
     """
 
+    # root directory refers to the base folder of the ParkCeleb dataset
     if len(sys.argv) != 2:
-        print("Usage: python script.py <root_directory>")
+        print("Usage: python download_videos.py <base_folder_path>")
         sys.exit(1)
         
-    root_directory = sys.argv[1] 
+    base_folder_path = sys.argv[1] 
 
     # Directories to traverse
     subdirectories = ['PD','CN']
     for subdir in subdirectories:
-        subdir_path = os.path.join(root_directory, subdir)
+        subdir_path = os.path.join(base_folder_path, subdir)
         if os.path.exists(subdir_path):
             process_metadata_files(subdir_path)
         else:
