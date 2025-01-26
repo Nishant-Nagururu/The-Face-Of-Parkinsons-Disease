@@ -165,7 +165,7 @@ If you want to see a video with the bounding box drawn on you can use the follow
    python draw_bounding_boxes.py <video_path> <bounding_box_csv_path> <output_video_path>
    ```
 
-   Parameters:
+   **Parameters:**
    - `<video_path>`: Path to video in The Face of Parkinsons Disease dataset. 
    - `<bounding_box_csv_path>`: Path to the CSV file containing bounding box data.
    - `<output_video_path>`: Path to where you would like to save the output video.
