@@ -336,7 +336,7 @@ def create_year_grid_image_counts(
 ###########################################################
 # 5) Main Entry Point
 ###########################################################
-def main(output_dir):
+def main(folder_path):
     """
     Main function to process all patient subfolders, generate histograms,
     and create grid images summarizing video distributions.
@@ -359,8 +359,8 @@ def main(output_dir):
     df_list_for_global = []
     
     # Iterate through each subfolder (e.g., "pd_01", "cn_02") in the output directory
-    for folder_name in os.listdir(output_dir):
-        folder_path = os.path.join(output_dir, folder_name)
+    for folder_name in os.listdir(folder_path):
+        folder_path = os.path.join(folder_path, folder_name)
         if not os.path.isdir(folder_path):
             continue  # Skip if not a directory
         
@@ -387,7 +387,7 @@ def main(output_dir):
         df_list_for_global.append(df)
     
     # Create the grid images showing video distributions across all patients
-    grid_all_path = os.path.join(output_dir, "all_videos_distribution.png")
+    grid_all_path = os.path.join(folder_path, "all_videos_distribution.png")
     create_year_grid_image_counts(
         all_videos_dict,
         grid_all_path,
@@ -395,7 +395,7 @@ def main(output_dir):
         include_totals=True  # Include a total row at the bottom
     )
     
-    grid_5s_path = os.path.join(output_dir, "all_videos_distribution_5s.png")
+    grid_5s_path = os.path.join(folder_path, "all_videos_distribution_5s.png")
     create_year_grid_image_counts(
         five_sec_dict,
         grid_5s_path,
@@ -406,7 +406,7 @@ def main(output_dir):
     # Create a global histogram for ALL patients combined
     if df_list_for_global:
         df_all_patients = pd.concat(df_list_for_global, ignore_index=True)
-        global_hist_path = os.path.join(output_dir, "hist_all_patients.png")
+        global_hist_path = os.path.join(folder_path, "hist_all_patients.png")
         create_and_save_global_histogram(df_all_patients, global_hist_path, YEAR_BUCKETS)
         print(f"Global histogram saved at: {global_hist_path}")
     
@@ -418,34 +418,27 @@ def main(output_dir):
 ###########################################################
 if __name__ == "__main__":
     """
-    Script Execution.
-    
     Example usage:
-        python analyze_3yr_buckets.py <output_directory>
-    
-    Where:
-        - <output_directory>: Directory containing patient subfolders with 'metadata.csv' and videos.
-    
-    Notes:
-        - The script generates histograms and grid images summarizing the distribution of videos
-          across predefined 3-year buckets relative to diagnosis.
-        - Outputs are saved within each patient subfolder and the main output directory.
+        python graph.py <folder_path>
+
+    Parameters:
+        <folder_path> : Path to the The_Face_Of_Parkinsons or The_Face_Of_Parkinsons_CN folders outputted by compile.py.
     """
     # Validate the number of command-line arguments
     if len(sys.argv) != 2:
-        print("Usage: python analyze_3yr_buckets.py <output_directory>")
+        print("Usage: python graph.py <folder_path>")
         sys.exit(1)
     
     # Parse the output directory from command-line arguments
-    output_dir = sys.argv[1]
+    folder_path = sys.argv[1]
     
     # Validate that the provided path exists and is a directory
-    if not os.path.exists(output_dir):
-        print(f"Error: {output_dir} does not exist.")
+    if not os.path.exists(folder_path):
+        print(f"Error: {folder_path} does not exist.")
         sys.exit(1)
-    if not os.path.isdir(output_dir):
-        print(f"Error: {output_dir} is not a directory.")
+    if not os.path.isdir(folder_path):
+        print(f"Error: {folder_path} is not a directory.")
         sys.exit(1)
     
     # Execute the main processing function
-    main(output_dir)
+    main(folder_path)

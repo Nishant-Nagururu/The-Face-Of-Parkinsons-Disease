@@ -169,8 +169,8 @@ if __name__ == "__main__":
 
     Parameters:
         <base_folder_path>   : Path to the PD or CN folder in the ParkCeleb dataset. 
-        <output_path>        : Destination directory for the compiled videos and metadata. This is the path to the The_Face_Of_Parkinsons or The_Face_Of_Parkinsons_CN folders.
-        <subfolder_prefix>   : Prefix of the subfolders to process (e.g., "pd_", "cn_").
+        <output_path>        : Destination directory for the compiled videos and metadata. This should be a path to the The_Face_Of_Parkinsons or The_Face_Of_Parkinsons_CN folders.
+        <subfolder_prefix>   : Prefix of the subfolders to process (e.g., "pd_", "cn_"). Must correspond to the base_folder_path.
     """
     # Validate the number of command-line arguments
     if len(sys.argv) != 4:
