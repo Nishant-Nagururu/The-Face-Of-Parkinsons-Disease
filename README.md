@@ -10,9 +10,7 @@ To focus specifically on hypomimia (reduced facial expressiveness), we have adap
 
 ### The Face of Parkinson's Disease
 
-To obtain the **The Face of Parkinson's Disease** dataset, download it [here](#). This dataset includes all video segments along with metadata detailing the locations of 478 facial landmarks in each detectable frame and the bounding box coordinates surrounding the target subject's face.
-
-Below is the process to recreate our dataset or develop a similar one starting from the **ParkCeleb** dataset. Note that some videos were manually curated and integrated from a [GitHub repository](#).
+To obtain the **The Face of Parkinson's Disease** dataset, download it here (coming soon). This dataset includes all video segments along with metadata detailing the locations of 478 facial landmarks in each detectable frame and the bounding box coordinates surrounding the target subject's face.
 
 ## The Face of Parkinson's Disease Pipeline 
 
@@ -48,11 +46,13 @@ Download the `face_landmarker_v2_with_blendshapes.task` file from the [Mediapipe
 
 #### a. Download ParkCeleb Repository
 
-After requesting and downloading the ParkCeleb repository from Zenodo, move it to the top level of this repository. Then, download the video files by running:
+After requesting and downloading the ParkCeleb metadata from Zenodo, move it to the top level of this repository. Then, download the video files by running:
 
 ```bash
-python download/download_videos.py path_to_parkceleb_zenodo_directory
+python download/download_videos.py <base_folder_path>
 ```
+**Parameters:**
+- `<base_folder_path>`: Path to the ParkCeleb dataset's base folder containing `PD` and `CN` subfolders.
 
 #### b. Extract Speaking Segments
 
