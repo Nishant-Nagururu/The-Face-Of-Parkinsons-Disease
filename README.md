@@ -180,8 +180,8 @@ If you utilize **The Face of Parkinson's Disease** in your research, please cite
 
 ```bibtex
 @article{nagururu2024face,
-  title={Analyzing Progression of Parkinson's Disease via a Longitudinal Analysis of Celebrity Hypomimia Symptoms},
-  author={Nagururu, Nishant and [Additional Authors]},
+  title={The Face of Parkinson’s Disease: A Longitudinal Dataset Capturing the Impact of Parkinson’s on Facial Expressivity},
+  author={Nagururu, Nishant and Wong, Alvin and Liu, Shuyu and Guarin, Diego},
   journal={},
   volume={},
   number={},
