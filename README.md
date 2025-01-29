@@ -186,7 +186,7 @@ If you utilize **The Face of Parkinson's Disease** in your research, please cite
   volume={},
   number={},
   pages={},
-  year={2024},
+  year={2025},
   publisher={}
 }
 ```
