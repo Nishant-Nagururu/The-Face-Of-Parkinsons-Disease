@@ -172,7 +172,7 @@ If you want to see a video with the bounding box drawn on you can use the follow
 
 ## Important Note on Disk Space Requirements 💾
 
-The complete dataset, including all video segments, target face images, and metadata, occupies approximately **100 GB**. We recommend using a high-performance computing (HPC) system or a robust PC for handling this dataset efficiently.
+The complete dataset, including all video segments, target face images, and metadata, will occupy approximately **100 GB** when it is released. We recommend using a high-performance computing (HPC) system or a robust PC for handling this dataset efficiently.
 
 ## Citing The Face of Parkinson's 📖
 
